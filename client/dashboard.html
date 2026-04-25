@@ -1,0 +1,22 @@
+<body onload="checkAuth()">
+
+<button onclick="start()">INICIAR</button>
+<button onclick="stop()">ENCERRAR</button>
+
+<p id="link"></p>
+
+<script src="app.js"></script>
+<script>
+let roomId;
+
+async function start() {
+  roomId = await createRoom();
+  link.innerText = location.origin + "/live.html#" + roomId;
+  startBroadcast(roomId);
+}
+
+function stop() {
+  stopBroadcast();
+  endRoom(roomId);
+}
+</script>
